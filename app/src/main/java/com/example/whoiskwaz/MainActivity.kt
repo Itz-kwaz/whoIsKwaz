@@ -1,11 +1,14 @@
 package com.example.whoiskwaz
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -17,6 +20,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val prefs:SharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        val display:String = prefs.getString("display", "").toString()
+
+        val name:TextView = findViewById(R.id.name)
+        name.text = display
+
         val playStore: ImageView = findViewById(R.id.playStore)
         playStore.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW)
@@ -61,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
         val facebook: ImageView = findViewById(R.id.facebook)
         facebook.setOnClickListener {
-            var intent: Intent = try {
+            val intent: Intent = try {
                 this.packageManager.getPackageInfo("com.facebook.katana", 0)
                 Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/"))
             } catch (e: Exception) {
@@ -79,13 +89,13 @@ class MainActivity : AppCompatActivity() {
 
         val linkedn: ImageView = findViewById(R.id.linkedn)
         linkedn.setOnClickListener {
-            var intent: Intent = try {
+            val intent: Intent = try {
                 this.packageManager.getPackageInfo("com.linkedin.android", 0)
                 Intent(Intent.ACTION_VIEW, Uri.parse("linkedin://profile/nkwachi-nwamaghinna-0b937914b"))
             } catch (e: Exception) {
                 Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/nkwachi-nwamaghinna-0b937914b/"))
             }
-            startActivity(intent);
+            startActivity(intent)
         }
 
 

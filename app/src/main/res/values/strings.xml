@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">whoIsKwaz</string>
+    <string name="hello">Hello</string>
+    <string name="name">name</string>
+    <string name="there">there</string>
+    <string name="exclamation">!</string>
+    <string name="password">password</string>
+    <string name="login">login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign">Sign</string>
+    <string name="up">Up</string>
+    <string name="phone_number">phone number</string>
+    <string name="button_text">SignUp</string>
+    <string name="email">Email</string>
+    <string name="bio">They say I\'m a mobile developer but I think I\'m a magician.</string>
 </resources>
